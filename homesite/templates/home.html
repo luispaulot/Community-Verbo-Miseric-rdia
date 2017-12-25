@@ -498,22 +498,20 @@
 	 <!--================================= VIDEO-SECTION START =============================================-->
     <section class="container-fluid section-space section-bg-1">
         <div class="container">
-            <h1 class="center">baptism</h1>
+            <h1 class="center">{{ vocacional.titulo }}</h1>
             <div class="center no-fs underline-bottom">
                 <img src="{% static 'images/uline.png' %}" alt="uline" class="image-center" />
             </div>
             <div class="row">
 				<div class="center col-md-10 column-center no-padding">
 					<div class="col-md-6 col-sm-12 res-image-bottom res-image-bottom-1">
-						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/RuGHt2Ix_cI?rel=0"></iframe>
-						</div>
+						<div>
+                            <img src="{{ vocacional.imagem.url }}" alt="image-vocacional" class="img-responsive image-center" />
+                        </div>
 					</div>
 
-					<div class="col-md-6 col-sm-12">
-						<h2 class="left h2-bottom"><a href="#">donec varius sodales</a></h2>
-						<p class="left p-bottom">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a arcu ullamcorper eros viverra suscipit. End of content.  End of content.Donec varius sodales orci. </p>
-						<p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a arcu ullamcorper eros viverra suscipit. End of content. Donec varius sodales orci.Aenean a arcu ullamcorper eros viverra suscipit.</p>
+					<div class="col-md-6 col-sm-12 text-left">
+						<p class="text-left">{{ vocacional.texto|safe|truncatechars:900 }}</p> <a href="#" style="color: #f2c516;" data-toggle="modal" data-target="#vocacional-modal">Leia mais...</a>
 					</div>
 				 </div>
             </div>
@@ -888,7 +886,7 @@
             showNotification('{{message.tags}}', '{{message}}')
         </script>
     {% endfor %}
-    <!-- Modal -->
+    <!-- Modal Pedido de oração -->
     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -951,6 +949,29 @@
         </div>
     </div>
     <!---Fim Modal Pedido Oração -->
+    <!-- Modal Vocacional -->
+    <div class="modal fade" id="vocacional-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-dialog">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         <div class="modal-title text-center">
+                            <h4>{{ vocacional.titulo }}</h4>
+                        </div>
+                        </div>
+                        <div class="modal-body text-left">
+                            {{ vocacional.texto|safe }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---Fim Modal Vocacional -->
 </body>
 
 </html>

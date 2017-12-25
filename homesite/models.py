@@ -18,6 +18,13 @@ def rename_sobre(instance, filename):
     return name
 
 
+def rename_vocacional(instance, filename):
+    ext = filename.split(".")[-1]
+    file = str(uuid.uuid4())
+    name = 'uploads/vocacional/'+file+'.'+ext
+    return name
+
+
 def rename_pedidos_oracao(instance, filename):
     ext = filename.split(".")[-1]
     file = str(uuid.uuid4())
@@ -133,4 +140,18 @@ class CalendarioSemanal(models.Model):
     texto = models.CharField('Texto', max_length=1000)
 
     def __str__(self):
-        return '{}'.format(self.dia) 
+        return '{}'.format(self.dia)
+
+
+class Vocacional(models.Model):
+    titulo = models.CharField('Título', max_length=50, blank=False, null=False)
+    texto = models.CharField('Texto', max_length=4000, blank=False, null=False)
+    imagem = models.ImageField(
+        'Imagem', upload_to=rename_vocacional, blank=False, null=False, help_text='1400x1000')
+
+    class Meta:
+        verbose_name = "Vocacional"
+        verbose_name_plural = "Vocacional"
+
+    def __str__(self):
+        return 'Área do vocacional'

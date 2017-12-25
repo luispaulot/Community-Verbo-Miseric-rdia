@@ -12,7 +12,8 @@ from agenda.models import Evento
 from pedidos_oracao.models import PedidosOracao
 
 from .models import (
-    BannerPrincipal, Sobre, Contato, PedidoOracao, CalendarioSemanal)
+    BannerPrincipal, Sobre, Contato, PedidoOracao, CalendarioSemanal,
+    Vocacional)
 
 from .forms import EmailForm, PedidoOracaoForm
 from .utils import send_mail
@@ -28,6 +29,7 @@ class HomeView(FormView):
         context['sobre'] = Sobre.objects.first()
         context['contato'] = Contato.objects.first()
         context['pedido_oracao'] = PedidoOracao.objects.first()
+        context['vocacional'] = Vocacional.objects.first()
         context['eventos'] = Evento.objects.order_by('-data_inicio')[:6]
         context['calendario_semanal'] = CalendarioSemanal.objects.all()
         return context

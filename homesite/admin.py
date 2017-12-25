@@ -4,7 +4,20 @@ from django import forms
 from ckeditor.widgets import CKEditorWidget
 
 from .models import (
-    BannerPrincipal, Sobre, Contato, PedidoOracao, CalendarioSemanal)
+    BannerPrincipal, Sobre, Contato, PedidoOracao, CalendarioSemanal,
+    Vocacional)
+
+
+class VocacionalAdminForm(forms.ModelForm):
+    texto = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = Vocacional
+        fields = '__all__'
+
+
+class VocacionalAdmin(admin.ModelAdmin):
+    form = VocacionalAdminForm
 
 
 class SobreAdminForm(forms.ModelForm):
@@ -37,3 +50,5 @@ admin.site.register(CalendarioSemanal)
 admin.site.register(Sobre, SobreAdmin)
 admin.site.register(PedidoOracao, PedidoOracaoAdmin)
 admin.site.register(Contato)
+admin.site.register(Vocacional, VocacionalAdmin)
+
