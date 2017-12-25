@@ -42,7 +42,8 @@ INSTALLED_APPS = [
 
     'homesite',
     'agenda',
-    'pedidos_oracao'
+    'pedidos_oracao',
+    'lectio_divina'
 
 ]
 

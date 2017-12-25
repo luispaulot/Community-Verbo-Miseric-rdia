@@ -1,0 +1,5 @@
+django==1.11
+pillow
+django-ckeditor
+python-dateutil
+psycopg2

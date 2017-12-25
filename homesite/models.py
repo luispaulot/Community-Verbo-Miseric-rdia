@@ -4,6 +4,13 @@ import uuid
 from django.db import models
 
 
+def rename_audio(instance, filename):
+    ext = filename.split(".")[-1]
+    file = str(uuid.uuid4())
+    name = 'uploads/lectio/audios/'+file+'.'+ext
+    return name
+
+
 def rename_banner(instance, filename):
     ext = filename.split(".")[-1]
     file = str(uuid.uuid4())
@@ -15,6 +22,20 @@ def rename_sobre(instance, filename):
     ext = filename.split(".")[-1]
     file = str(uuid.uuid4())
     name = 'uploads/sobre/'+file+'.'+ext
+    return name
+
+
+def rename_calendario_semanal(instance, filename):
+    ext = filename.split(".")[-1]
+    file = str(uuid.uuid4())
+    name = 'uploads/calendario_semanal/'+file+'.'+ext
+    return name
+
+
+def rename_lectio(instance, filename):
+    ext = filename.split(".")[-1]
+    file = str(uuid.uuid4())
+    name = 'uploads/lectio/images/'+file+'.'+ext
     return name
 
 
@@ -142,6 +163,22 @@ class CalendarioSemanal(models.Model):
     def __str__(self):
         return '{}'.format(self.dia)
 
+    class Meta:
+        verbose_name = "Calendario Semanal"
+        verbose_name_plural = "Calendario Semanal"
+
+
+class CalendarioSemanalImagem(models.Model):
+    imagem = models.ImageField(
+        'Imagem', upload_to=rename_calendario_semanal, blank=False, null=False, help_text='500x370')
+
+    def __str__(self):
+        return 'Imagem para a seção de calendário semanal'
+
+    class Meta:
+        verbose_name = "Calendario Semanal Imagem"
+        verbose_name_plural = "Calendario Semanal Imagem"
+
 
 class Vocacional(models.Model):
     titulo = models.CharField('Título', max_length=50, blank=False, null=False)
@@ -155,3 +192,15 @@ class Vocacional(models.Model):
 
     def __str__(self):
         return 'Área do vocacional'
+
+
+class LectioDivinaImagem(models.Model):
+    imagem = models.ImageField(
+        'Imagem', upload_to=rename_lectio, blank=False, null=False, help_text='750x430')
+
+    def __str__(self):
+        return 'Imagem para a seção de lectio divina'
+
+    class Meta:
+        verbose_name = "Imagem Lectio Divina"
+        verbose_name_plural = "Imagem Lectio Divina"

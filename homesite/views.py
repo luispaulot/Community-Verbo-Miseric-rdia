@@ -1,19 +1,22 @@
+from datetime import datetime
+
 from django.conf import settings
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 
-
 from django.shortcuts import render
 
 from django.views.generic import TemplateView, FormView
+
+from lectio_divina.models import LectioDivina
 
 from agenda.models import Evento
 from pedidos_oracao.models import PedidosOracao
 
 from .models import (
     BannerPrincipal, Sobre, Contato, PedidoOracao, CalendarioSemanal,
-    Vocacional)
+    Vocacional, CalendarioSemanalImagem, LectioDivinaImagem)
 
 from .forms import EmailForm, PedidoOracaoForm
 from .utils import send_mail
@@ -30,8 +33,15 @@ class HomeView(FormView):
         context['contato'] = Contato.objects.first()
         context['pedido_oracao'] = PedidoOracao.objects.first()
         context['vocacional'] = Vocacional.objects.first()
+        context['imagem_calendario'] = CalendarioSemanalImagem.objects.first()
+        context['imagem_lectio'] = LectioDivinaImagem.objects.first()
         context['eventos'] = Evento.objects.order_by('-data_inicio')[:6]
         context['calendario_semanal'] = CalendarioSemanal.objects.all()
+        today = datetime.now()
+        lectio = LectioDivina.objects.filter(data=today)
+        if lectio:
+            context['lectio'] = lectio[0]
+
         return context
 
     def form_valid(self, form):

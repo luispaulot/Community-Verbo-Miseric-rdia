@@ -52,7 +52,7 @@
                     <ul class="nav navbar-nav navbar-right" id="menu-list">
                         <li class="menu-fs"><a href="#home" class="menu-underline pagescroll">Home</a>
                         </li>
-                        <li class="menu-fs"><a href="#services" class="menu-underline pagescroll">Services</a>
+                        <li class="menu-fs"><a href="#lectio" class="menu-underline pagescroll">Lectio Diária</a>
                         </li>
                         <li class="menu-fs"><a href="#schedule" class="menu-underline pagescroll">Calendário</a>
                         </li>
@@ -237,42 +237,36 @@
 	
 	
     <!--================================= TWO-COLUMN-ICON-SECTION START =============================================-->
-    <section class="container-fluid section-space section-bg-2">
+    <section class="container-fluid section-space section-bg-2" id="lectio">
         <div class="container">
-            <h1 class="center">a time for prayer</h1>
+            <h1 class="center">Lectio Divina</h1>
             <div class="center no-fs underline-bottom">
                 <img src="{% static 'images/uline.png' %}" alt="uline" class="image-center" />
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-12 res-image-bottom res-image-bottom-1">
                     <div>
-                        <img src="{% static 'images/750x430.jpg' %}" alt="image" class="img-responsive image-center" />
+                        <img src="{{ imagem_lectio.imagem.url }}" alt="image" class="img-responsive image-center" style="height: 335px;" />
                     </div>
                 </div>
 
                 <div class="col-md-6 col-sm-12">
-                    <div class="services-icon">
-                        <img src="{% static 'images/64x64x7.png' %}" alt="64x64x7" />
-                    </div>
-                    <div class="services-pad venue-row-space">
-                        <h2 class="left h2-bottom"><a href="#">education</a></h2>
-                        <p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.</p>
-                    </div>
-
-                    <div class="services-icon">
-                        <img src="{% static 'images/64x64x8.png' %}" alt="64x64x8" />
-                    </div>
-                    <div class="services-pad venue-row-space">
-                        <h2 class="left h2-bottom"><a href="#">funerals</a></h2>
-                        <p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.</p>
-                    </div>
-
-                    <div class="services-icon">
-                        <img src="{% static 'images/64x64x9.png' %}" alt="64x64x9" />
-                    </div>
-                    <div class="services-pad">
-                        <h2 class="left h2-bottom"><a href="#">charity</a></h2>
-                        <p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.</p>
+                    <div class="venue-row-space">
+                        {% if lectio %}
+                            <h2 class="left h2-bottom"><a href="#">{{ lectio.titulo }}</a></h2>
+                            <p class="left uline-sec-time res-text-center-1">{{ lectio.data }}</p>
+                            <p class="left">{{ lectio.texto|safe|truncatechars:700 }}</p> <a href="#" style="color: #f2c516;" data-toggle="modal" data-target="#lectio-modal">Leia mais...</a>
+                            <br>
+                            {% if lectio.audio %}
+                                <p><b>Ouça o áudio</b></p>
+                                <audio controls>
+                                    <source src="{{ lectio.audio.url }}" type="audio/ogg">
+                                    Seu navegador não suporta o componente de áudio. Por gentileza utilize outro navegador.
+                                </audio>
+                            {% endif %}
+                        {% else %}
+                        <p>Não há nenhum registro de lectio divina para esta data...</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -291,7 +285,7 @@
 				<div class="center col-md-10 column-center no-padding schedule-res-center">
                     <div class="col-md-6">
 						<div class="res-image-bottom-1 res-image-bottom">
-							<img src="{% static 'images/500x370x1.jpg' %}" alt="image" class="img-responsive left image-center" />
+							<img src="{{ imagem_calendario.imagem.url }}" alt="image-calendario" class="img-responsive left image-center" />
 						</div>
 					</div>
                     {% for calendario in  calendario_semanal %}
@@ -972,6 +966,36 @@
         </div>
     </div>
     <!---Fim Modal Vocacional -->
+    <!-- Modal lectio -->
+    <div class="modal fade" id="lectio-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-dialog">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         <div class="modal-title text-center">
+                            <h4>Lectio Divina - {{ lectio.titulo }}</h4>
+                        </div>
+                        </div>
+                        <div class="modal-body text-left">
+                            {{ lectio.texto|safe }}
+                            {% if lectio.audio %}
+                                <p><b>Ouça o áudio</b></p>
+                                <audio controls>
+                                    <source src="{{ lectio.audio.url }}" type="audio/ogg">
+                                    Seu navegador não suporta o componente de áudio. Por gentileza utilize outro navegador.
+                                </audio>
+                            {% endif %}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---Fim Modal lectio -->
 </body>
 
 </html>

@@ -5,7 +5,7 @@ from ckeditor.widgets import CKEditorWidget
 
 from .models import (
     BannerPrincipal, Sobre, Contato, PedidoOracao, CalendarioSemanal,
-    Vocacional)
+    Vocacional, CalendarioSemanalImagem, LectioDivinaImagem)
 
 
 class VocacionalAdminForm(forms.ModelForm):
@@ -51,4 +51,5 @@ admin.site.register(Sobre, SobreAdmin)
 admin.site.register(PedidoOracao, PedidoOracaoAdmin)
 admin.site.register(Contato)
 admin.site.register(Vocacional, VocacionalAdmin)
-
+admin.site.register(CalendarioSemanalImagem)
+admin.site.register(LectioDivinaImagem)
