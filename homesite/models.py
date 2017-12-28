@@ -4,6 +4,20 @@ import uuid
 from django.db import models
 
 
+def rename_baluartes(instance, filename):
+    ext = filename.split(".")[-1]
+    file = str(uuid.uuid4())
+    name = 'uploads/baluartes/'+file+'.'+ext
+    return name
+
+
+def rename_casas(instance, filename):
+    ext = filename.split(".")[-1]
+    file = str(uuid.uuid4())
+    name = 'uploads/casas/'+file+'.'+ext
+    return name
+
+
 def rename_audio(instance, filename):
     ext = filename.split(".")[-1]
     file = str(uuid.uuid4())
@@ -43,6 +57,13 @@ def rename_vocacional(instance, filename):
     ext = filename.split(".")[-1]
     file = str(uuid.uuid4())
     name = 'uploads/vocacional/'+file+'.'+ext
+    return name
+
+
+def rename_socio(instance, filename):
+    ext = filename.split(".")[-1]
+    file = str(uuid.uuid4())
+    name = 'uploads/socio/'+file+'.'+ext
     return name
 
 
@@ -102,6 +123,10 @@ class Contato(models.Model):
     email = models.EmailField('Email')
     latitude = models.CharField('Latitude', max_length=20, blank=True, null=True)
     longitude = models.CharField('Longitude', max_length=20, blank=True, null=True)
+    facebook = models.URLField('Facebook', blank=True, null=True)
+    instagran = models.URLField('Instagran', blank=True, null=True)
+    twitter = models.URLField('Twitter', blank=True, null=True)
+    google_plus = models.URLField('Google Plus', blank=True, null=True)
 
     class Meta:
         verbose_name = "Contato"
@@ -204,3 +229,49 @@ class LectioDivinaImagem(models.Model):
     class Meta:
         verbose_name = "Imagem Lectio Divina"
         verbose_name_plural = "Imagem Lectio Divina"
+
+
+class Baluartes(models.Model):
+    nome = models.CharField('Nome', max_length=100, blank=False, null=False)
+    texto = models.CharField('Texto', max_length=4000, blank=False, null=False)
+    imagem = models.ImageField(
+        'Imagem', upload_to=rename_baluartes, blank=False, null=False, help_text='675x410')
+
+    class Meta:
+        verbose_name = "Baluartes"
+        verbose_name_plural = "Baluartes"
+
+    def __str__(self):
+        return '{}'.format(self.nome)
+
+    def save(self, *args, **kwargs):
+        if Baluartes.objects.count() <= 3:
+            super(Baluartes, self).save(*args, **kwargs)
+
+
+class Socio(models.Model):
+    titulo = models.CharField('Título', max_length=50, blank=False, null=False)
+    texto = models.CharField('Texto', max_length=2000, blank=False, null=False)
+    imagem = models.ImageField(
+        'Imagem', upload_to=rename_socio, blank=False, null=False, help_text='1400x1000')
+
+    class Meta:
+        verbose_name = "Sócio"
+        verbose_name_plural = "Sócio"
+
+    def __str__(self):
+        return 'Área do Sócio'
+
+
+class Casas(models.Model):
+    nome = models.CharField('Nome', max_length=50)
+    texto = models.CharField('Texto', max_length=4000, blank=False, null=False)
+    imagem = models.ImageField(
+        'Imagem', upload_to=rename_casas, blank=False, null=False, help_text='600x400')
+
+    class Meta:
+        verbose_name = "Casa"
+        verbose_name_plural = "Casas"
+
+    def __str__(self):
+        return '{}'.format(self.nome)

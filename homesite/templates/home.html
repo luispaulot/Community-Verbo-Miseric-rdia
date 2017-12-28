@@ -9,7 +9,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Comunidade Verbo de Misericórdia</title>
     <!-- FAVICON LINK -->
-    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/favicon-32x32.png' %}" type="image/x-icon">
     <!-- Bootstrap -->
     <link href="{% static 'css/vendor/bootstrap.min.css' %}" rel="stylesheet">
 
@@ -45,24 +45,28 @@
                         <span class="icon-bar"></span>
                     </button>
                     <div>
-                       <a href="#"> <img src="{% static 'images/150x50.png' %}" alt="150x50" /></a>
+                       <a href="#"> <img src="{% static 'images/logo1.jpg' %}" alt="150x50" /></a>
                     </div>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right" id="menu-list">
-                        <li class="menu-fs"><a href="#home" class="menu-underline pagescroll">Home</a>
+                        <li class="menu-fs"><a href="#home" class="menu-underline pagescroll">Início</a>
                         </li>
-                        <li class="menu-fs"><a href="#lectio" class="menu-underline pagescroll">Lectio Diária</a>
+                        <li class="menu-fs"><a href="#lectio" class="menu-underline pagescroll">Lectio divina</a>
                         </li>
-                        <li class="menu-fs"><a href="#schedule" class="menu-underline pagescroll">Calendário</a>
+                        <li class="menu-fs"><a href="#schedule" class="menu-underline pagescroll">Calendário semanal</a>
                         </li>
-                        <li class="menu-fs"><a href="#gallery" class="menu-underline pagescroll"> Gallery</a>
-                        </li>
-                        <li class="menu-fs"><a href="#pedidooracao" class="menu-underline pagescroll">Pedido de oração</a>
+                        <li class="menu-fs"><a href="#gallery" class="menu-underline pagescroll">Galeria</a>
                         </li>
                         <li class="menu-fs"><a href="#eventos" class="menu-underline pagescroll">Eventos</a>
                         </li>
-                        <li class="menu-fs"><a href="#sobre" class="menu-underline pagescroll"> Quem Somos</a>
+                        <li class="menu-fs"><a href="#baluartes" class="menu-underline pagescroll">Baluartes</a>
+                        </li>
+                        <li class="menu-fs"><a href="#pedidooracao" class="menu-underline pagescroll">Pedido de oração</a>
+                        </li>
+                        <li class="menu-fs"><a href="#sobre" class="menu-underline pagescroll"> Quem somos</a>
+                        </li>
+                        <li class="menu-fs"><a href="#contato" class="menu-underline pagescroll">Contato</a>
                         </li>
                     </ul>
                 </div>
@@ -90,150 +94,27 @@
     </section>
     <!--================================= HEADER-1 END =============================================-->
 
-    <!--================================= OUR SERVICES START =============================================-->
-    <section class="container-fluid section-space section-bg-1" id="services">
+    <!--================================= HOUSES START =============================================-->
+    <!-- <section class="container-fluid section-space section-bg-1">
         <div class="container">
-            <h1 class="center">our services</h1>
+            <h1 class="center">Nossas Casas</h1>
             <div class="center no-fs underline-bottom">
                 <img src="{% static 'images/uline.png' %}" alt="uline" class="image-center" />
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <div class="services-icon">
-                        <img src="{% static 'images/64x64x1.png' %}" alt="64x64x1" />
+                {% for casa in casas %}
+                    <div class="col-md-4 col-sm-4">
+                        <div class="left image-bottom">
+                            <img src="{{ casa.imagem.url }}" alt="image" class="img-responsive res-image" />
+                        </div>
+                        <h2 class="left h2-bottom">{{ casa.nome }}</h2>
+                        <p class="left">{{ casa.texto|safe|truncatechars:250 }}</p>
                     </div>
-                    <div class="services-pad services-bottom">
-                        <h2 class="left h2-bottom"><a href="#">baptism</a></h2>
-                        <p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.</p>
-                    </div>
-                </div>
-				
-				<div class="col-md-4 col-sm-6">
-
-                    <div class="services-icon">
-                        <img src="{% static 'images/64x64x2.png' %}" alt="64x64x2" />
-                    </div>
-                    <div class="services-pad services-bottom">
-                        <h2 class="left h2-bottom"><a href="#">weddings</a></h2>
-                        <p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6">
-                    <div class="services-icon">
-                        <img src="{% static 'images/64x64x3.png' %}" alt="64x64x3" />
-                    </div>
-                    <div class="services-pad services-bottom">
-                        <h2 class="left h2-bottom"><a href="#">education</a></h2>
-                        <p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.</p>
-                    </div>
-                   
-                </div>
-				
-				<div class="col-md-4 col-sm-6">
-					 <div class="services-icon">
-							<img src="{% static 'images/64x64x4.png' %}" alt="64x64x4" />
-						</div>
-						<div class="services-pad services-res-bottom-1 services-res-bottom">
-							<h2 class="left h2-bottom "><a href="#">funerals</a></h2>
-							<p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.</p>
-						</div>
-				</div>
-				
-                <div class="col-md-4 col-sm-6">
-                    <div class="services-icon">
-                        <img src="{% static 'images/64x64x5.png' %}" alt="64x64x5" />
-                    </div>
-                    <div class="services-pad services-res-bottom">
-                        <h2 class="left h2-bottom"><a href="#">ministry</a></h2>
-                        <p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.</p>
-                    </div>
-                </div>
-				
-				<div class="col-md-4 col-sm-6">
-					<div class="services-icon">
-                        <img src="{% static 'images/64x64x6.png' %}" alt="64x64x6" />
-                    </div>
-                    <div class="services-pad">
-                        <h2 class="left h2-bottom"><a href="#">sermon</a></h2>
-                        <p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.</p>
-                    </div>
-				 </div>
+                {% endfor %}
             </div>
         </div>
-    </section>
-    <!--================================= OUR SERVICES END =============================================-->
-
-   
-
-    <!--================================= OUR ENVIRONMENT START =============================================-->
-    <section class="container-fluid section-space section-bg-2">
-        <div class="container">
-            <h1 class="center">our environment</h1>
-            <div class="center no-fs underline-bottom">
-                <img src="{% static 'images/uline.png' %}" alt="uline" class="image-center" />
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="center image-bottom">
-                        <img src="{% static 'images/750x400x1.jpg' %}" alt="750x400x1" class="img-responsive" />
-                    </div>
-					<h2 class="center h2-bottom"><a href="#">prayer</a></h2>
-					<div class="col-md-10 column-center no-padding">
-						<p class="center common-res-bottom">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a arcu ullamcorper eros viverra suscipit. End of content.</p>
-					</div>
-                </div>
-
-                <div class="col-md-6 col-sm-6">
-                    <div class="center image-bottom">
-                        <img src="{% static 'images/750x400x2.jpg' %}" alt="750x400x2" class="img-responsive" />
-                    </div>
-                    <h2 class="center h2-bottom"><a href="#">worship</a></h2>
-                    <div class="col-md-10 column-center no-padding">
-						<p class="center common-res-bottom">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a arcu ullamcorper eros viverra suscipit. End of content.</p>
-					</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================================= OUR ENVIRONMENT END =============================================-->
-
-    <!--================================= MINISTRIES START =============================================-->
-    <section class="container-fluid section-space section-bg-1">
-        <div class="container">
-            <h1 class="center">ministries</h1>
-            <div class="center no-fs underline-bottom">
-                <img src="{% static 'images/uline.png' %}" alt="uline" class="image-center" />
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-4 common-res-bottom">
-                    <div class="left image-bottom">
-                        <img src="{% static 'images/600x400x1.jpg' %}" alt="image" class="img-responsive res-image" />
-                    </div>
-                    <h2 class="left h2-bottom"><a href="#">children</a></h2>
-                    <p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a arcu ullamcorper eros viverra suscipit. End of content.</p>
-                </div>
-
-                <div class="col-md-4 col-sm-4 common-res-bottom">
-                    <div class="left image-bottom">
-                        <img src="{% static 'images/600x400x2.jpg' %}" alt="image" class="img-responsive res-image" />
-                    </div>
-                    <h2 class="left h2-bottom"><a href="#">youth</a></h2>
-                    <p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a arcu ullamcorper eros viverra suscipit. End of content.</p>
-                </div>
-
-                <div class="col-md-4 col-sm-4">
-                    <div class="left image-bottom">
-                        <img src="{% static 'images/600x400x3.jpg' %}" alt="image" class="img-responsive res-image" />
-                    </div>
-                    <h2 class="left h2-bottom"><a href="#">prison</a></h2>
-                    <p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a arcu ullamcorper eros viverra suscipit. End of content.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!--================================= MINISTRIES END =============================================-->
+    </section> -->
+    <!--================================= HOUSES END =============================================-->
 	
 	
     <!--================================= TWO-COLUMN-ICON-SECTION START =============================================-->
@@ -292,8 +173,8 @@
                         
     					<div class="col-md-6">
     						<div>
-                                <p class="left uline-sec-time res-text-center-1">{{ calendario.dia }} {{ calendario.horario_inicial}}h - {{ calendario.horario_final}}h</p>
-    							<h4 class="left h4-bottom res-text-center-1"><a href="">{{ calendario.titulo }}</a></h4>
+                                <p class="left uline-sec-time res-text-center-1">{{ calendario.dia }} {{ calendario.horario_inicial}}h - {{ calendario.horario_final}}</p>
+    							<h4 class="left h4-bottom res-text-center-1"><a href="#" data-toggle="modal" data-target="#{{ calendario.pk }}-modal-calendario">{{ calendario.titulo }}</a></h4>
     							
     							<p class="left p-bottom res-text-center-1">{{ calendario.texto }}</p>
     						</div>
@@ -309,7 +190,7 @@
 	<!--================================= GALLERY START =============================================-->
     <section class="container-fluid section-space section-bg-2" id="gallery">
         <div class="container">
-            <h1 class="center">gallery</h1>
+            <h1 class="center">Galeria de fotos</h1>
             <div class="center no-fs underline-bottom">
                 <img src="{% static 'images/uline.png' %}" alt="uline" class="image-center" />
             </div>
@@ -376,49 +257,51 @@
     <!--================================= UPCOMING EVENTS END =============================================-->
 	
 	 <!--================================= TWO-COLUMN-SECTION START =============================================-->
-    <section class="container-fluid section-bg-2 no-padding">
-        <div class="two-column-bgimage-1 two-column-bgimage-1-height">
+    <section class="container-fluid section-bg-2 no-padding" id="baluartes">
+        <h1 class="center" style="margin-top: 20px;">Nossos Baluartes</h1>
+        <div class="center no-fs underline-bottom">
+            <img src="{% static 'images/uline.png' %}" alt="uline" class="image-center" />
         </div>
-        <div class="two-column-bgimage-pad-1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 two-column-content-height">
+        {% for baluarte in baluartes %}
+            {% if forloop.counter == 1 %}
+                <div class="two-column-bgimage-1-height" style="background: url({{ baluarte.imagem.url }});">
+                </div>
+            {% elif forloop.counter == 2 %}
+                <div class="two-column-bgimage-2-height" style="background: url({{ baluarte.imagem.url }});">
+                </div>
+            {% else %}
+                <div class="two-column-bgimage-1-height" style="background: url({{ baluarte.imagem.url }});">
+                </div>
+            {% endif %}
+            <div class="two-column-bgimage-pad-1">
+                <div class="container">
+                    <div class="row">
+                        {% if forloop.counter == 1 %}
+                            <div class="col-md-6 two-column-content-height" style="float: right;">
+                                <h2 class="left h2-bottom">{{ baluarte.nome }}</h2>
+                                <p class="left p-bottom">{{ baluarte.texto|safe|truncatechars:500 }} <a href="#" style="color: #f2c516;" data-toggle="modal" data-target="#{{ baluarte.pk }}-modal">Leia mais</a></p>
 
-                    </div>
-
-                    <div class="col-md-6 two-column-content-height content-pad-1">
-                        <h2 class="left h2-bottom"><a href="#">bless this home</a></h2>
-                        <p class="left p-bottom">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a arcu ullamcorper eros viverra suscipit. End of content.Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra. </p>
-                        <p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a arcu ullamcorper eros viverra suscipit. End of content.Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+                            </div>
+                        {% elif forloop.counter == 2 %}
+                            <div class="col-md-6 two-column-content-height content-pad-1">
+                                <h2 class="left h2-bottom">{{ baluarte.nome }}</h2>
+                                <p class="left p-bottom">{{ baluarte.texto|safe|truncatechars:500 }} <a href="#" style="color: #f2c516;" data-toggle="modal" data-target="#{{ baluarte.pk }}-modal">Leia mais</a></p></p>
+                            </div>
+                        {% else %}
+                            <div class="col-md-6 two-column-content-height" style="float: right;">
+                                <h2 class="left h2-bottom">{{ baluarte.nome }}</h2>
+                                <p class="left p-bottom">{{ baluarte.texto|safe|truncatechars:500 }} <a href="#" style="color: #f2c516;" data-toggle="modal" data-target="#{{ baluarte.pk }}-modal">Leia mais</a></p></p>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="two-column-bgimage-2 two-column-bgimage-2-height">
-        </div>
-        <div class="two-column-bgimage-pad-1">
-            <div class="container">
-                <div class="row">
-
-
-                    <div class="col-md-6 two-column-content-height content-pad-1">
-                        <h2 class="left h2-bottom"><a href="#">be faithful in small things</a></h2>
-                        <p class="left p-bottom">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a arcu ullamcorper eros viverra suscipit. End of content.Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra. </p>
-                        <p class="left">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a arcu ullamcorper eros viverra suscipit. End of content.Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
-                    </div>
-                    <div class="col-md-6 two-column-content-height">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        {% endfor %}
     </section>
     <!--================================= TWO-COLUMN-SECTION END =============================================-->
 	
 	  <!--================================= HELP PEOPLE START =============================================-->
-    <section class="container-fluid section-space section-bg-1">
+    <!-- <section class="container-fluid section-space section-bg-1">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-12">
@@ -449,9 +332,32 @@
 
             </div>
         </div>
-    </section>
+    </section> -->
     <!--================================= HELP PEOPLE END =============================================-->
 	
+     <!--================================= Vocacional-SECTION START =============================================-->
+    <section class="container-fluid section-space section-bg-1">
+        <div class="container">
+            <h1 class="center">{{ vocacional.titulo }}</h1>
+            <div class="center no-fs underline-bottom">
+                <img src="{% static 'images/uline.png' %}" alt="uline" class="image-center" />
+            </div>
+            <div class="row">
+                <div class="center col-md-10 column-center no-padding">
+                    <div class="col-md-6 col-sm-12 res-image-bottom res-image-bottom-1">
+                        <div>
+                            <img src="{{ vocacional.imagem.url }}" alt="image-vocacional" class="img-responsive image-center" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12 text-left">
+                        <p class="text-left">{{ vocacional.texto|safe|truncatechars:900 }}</p> <a href="#" style="color: #f2c516;" data-toggle="modal" data-target="#vocacional-modal">Leia mais...</a>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+    <!--================================= Vocacional-SECTION END =============================================-->
 	 <!--================================= PEDIDO DE ORAÇÃO =============================================-->
     <section class="container-fluid cta-section-space" id="pedidooracao" style="background: url({{ pedido_oracao.imagem.url }});">
         <div class="container">
@@ -489,54 +395,29 @@
     </section>
     <!--================================= TWO-COLUMN-RIGHT-IMAGE END =============================================-->
 	
-	 <!--================================= VIDEO-SECTION START =============================================-->
-    <section class="container-fluid section-space section-bg-1">
-        <div class="container">
-            <h1 class="center">{{ vocacional.titulo }}</h1>
-            <div class="center no-fs underline-bottom">
-                <img src="{% static 'images/uline.png' %}" alt="uline" class="image-center" />
-            </div>
-            <div class="row">
-				<div class="center col-md-10 column-center no-padding">
-					<div class="col-md-6 col-sm-12 res-image-bottom res-image-bottom-1">
-						<div>
-                            <img src="{{ vocacional.imagem.url }}" alt="image-vocacional" class="img-responsive image-center" />
-                        </div>
-					</div>
-
-					<div class="col-md-6 col-sm-12 text-left">
-						<p class="text-left">{{ vocacional.texto|safe|truncatechars:900 }}</p> <a href="#" style="color: #f2c516;" data-toggle="modal" data-target="#vocacional-modal">Leia mais...</a>
-					</div>
-				 </div>
-            </div>
-        </div>
-    </section>
-    <!--================================= VIDEO-SECTION END =============================================-->
 
     <!--================================= EMAIL SUBSCRIPTION START =============================================-->
     <section class="container-fluid email-bgimage email-section-space">
         <div class="container">
             <div class="col-md-10 column-center no-padding">
-                <h1 class="center cta-head-bottom">email subscription</h1>
-                <p class="center">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean a arcu.Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+                <h1 class="center cta-head-bottom">{{ socio.titulo }}</h1>
+                <p class="center">{{ socio.texto|safe }}</p>
 				
 				<div id="mc_embed_signup">
 					<div class="col-md-5 col-sm-6 col-xs-8 column-center no-padding">
 						<div class="form-top">
-							<form class="subscribe_form" method="POST" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" action="http://evethemes.us11.list-manage.com/subscribe/post?u=a795532c55a578843e04b09c0&amp;id=fa362f029a"  novalidate>
-								<div class="clearfix">
-									<input class="form-control" id="mce-EMAIL" type="email" name="EMAIL" placeholder="Your Mail (required)" />
+							<form class="subscribe_form" method="POST" action="{% url 'socio' %}"  novalidate>
+                                {% csrf_token %}
+                                <div class="clearfix">
+                                    <input class="form-control" id="id_nome" type="text" name="nome" placeholder="Seu nome completo" />
+                                    <br>
+									<input class="form-control" id="id_email" type="email" name="email" placeholder="Seu melhor email" />
 								</div>
 								
 								<div class="center indicator-top" id="ResultMsg"><span id="SuccessMsg" class="email-success"></span><span id="FailureMsg" class="email-failure"></span></div>
 								
 								<div class="center btn-top">
-									<input type="submit" id="mc-embedded-subscribe"  class="btn-1" name="submit" value="SUBSCRIBE">	
-								</div>
-								
-								<div id="mce-responses">
-									<div class="response response-msg" id="mce-error-response"></div>
-									<div class="response response-msg" id="mce-success-response"></div>
+									<input type="submit" id="mc-embedded-subscribe"  class="btn-1" name="submit" value="ENVIAR">	
 								</div>
 							</form>
 						</div>
@@ -551,7 +432,7 @@
 
  
     <!--================================= FOOTER START =============================================-->
-    <section class="container-fluid section-space section-bg-1">
+    <section class="container-fluid section-space section-bg-1" id="contato">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 common-res-bottom">
@@ -630,58 +511,72 @@
             <div class="row single footer-text">
                 <div class="col-md-5 col-sm-12 col-xs-12 footer-split-column-1 footer-break-bottom">
 					<div class="footer-col-center">
-						<h2 class="left latest-posts-bottom">latest posts</h2>
+						<h2 class="left latest-posts-bottom">Onde nos encontrar?</h2>
 						<div class="distab footer-table-bottom-pad">
-							<div class="distab-cell-top">
-								<img src="{% static 'images/100x100x6.png' %}" alt="image" />
-							</div>
 							<div class="distab-cell-middle footer-table-left-pad">
-								 <p class="left footer-content">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.  </p>
+                            <h4 class="left" style="color: white">Casa Mãe da Misericórdia</h4>
+								<p class="left footer-content">Rua: Joel Santana, nº.148, Bairro: Alice Maia.<br>
+                                    Cidade: Montes Claros – MG.
+                                </p>
 							</div>
 						</div>
 						
-						<div class="distab">
-							<div class="distab-cell-top">
-								 <img src="{% static 'images/100x100x7.png' %}" alt="image" />
-							</div>
-							<div class="distab-cell-middle footer-table-left-pad">
-								<p class="left footer-content">Donec varius sodales orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.  </p>
-							</div>
-						</div>
+						<div class="distab footer-table-bottom-pad">
+                            <div class="distab-cell-middle footer-table-left-pad">
+                            <h4 class="left" style="color: white">Casa Sagrada Família</h4>
+                                <p class="left footer-content">Rua: Vila Nova de Minas, nº.36, Bairro: Vila Tiradentes.<br>
+                                    Cidade: Montes Claros – MG.
+                                    <br>Telefones de Contato: (38) 9151-2713
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="distab footer-table-bottom-pad">
+                            <div class="distab-cell-middle footer-table-left-pad">
+                            <h4 class="left" style="color: white">Casa Lázaro</h4>
+                                <p class="left footer-content">Rua: Vila Nova de Minas, nº.08, Bairro: Vila Tiradentes
+                                    <br>Cidade: Montes Claros – Minas Gerais.
+                                </p>
+                            </div>
+                        </div>
 					</div>
                 </div>
                 <div class="col-md-2 col-sm-4 col-xs-6 entry-meta footer-fixed footer-fixed-bottom footer-split-column">
-                    <div class="footer-col-center">
-                        <h2 class="left h2-bottom">about</h2>
+                    <div class="footer-col-left">
+                        <h2 class="left h2-bottom">Mapa do site</h2>
                         <div class="left entry-meta">
                             <ul class="no-padding no-margin">
                                 <li class="footer-icon-bk">
-                                    <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#">Donecvarius Asdf</a></span>
+                                    <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#home" class="menu-underline pagescroll">Início</a></span>
                                     </p>
                                 </li>
 
                                 <li class="footer-icon-bk footer-icon-bk-bottom">
-                                  <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#">Sociosqu Apnt</a></span>
+                                  <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#lectio" class="menu-underline pagescroll">Lectio Diária</a></span>
                                     </p>
                                 </li>
 
                                 <li class="footer-icon-bk footer-icon-bk-bottom">
-                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#">Ullamcorper Tati</a></span>
+                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#schedule" class="menu-underline pagescroll">Calendário Semanal</a></span>
                                     </p>
                                 </li>
 
                                 <li class="footer-icon-bk footer-icon-bk-bottom">
-                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#">Viverra Sociqu</a></span>
+                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#gallery" class="menu-underline pagescroll"> Gallery</a></span>
                                     </p>
                                 </li>
 								
 								<li class="footer-icon-bk footer-icon-bk-bottom">
-                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#">End of content</a></span>
+                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#baluartes" class="menu-underline pagescroll">Baluartes</a></span>
                                     </p>
                                 </li>
 
                                 <li class="footer-icon-bk footer-icon-bk-bottom">
-                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#">Himenaeos Susi</a></span>
+                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#pedidooracao" class="menu-underline pagescroll">Pedido de oração</a></span>
+                                    </p>
+                                </li>
+                                <li class="footer-icon-bk footer-icon-bk-bottom">
+                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#eventos" class="menu-underline pagescroll">Eventos</a></span>
                                     </p>
                                 </li>
                             </ul>
@@ -690,37 +585,16 @@
                 </div>
 
                 <div class="col-md-2 col-sm-4 col-xs-6 entry-meta footer-fixed footer-fixed-bottom footer-split-column">
-                    <div class="footer-col-center">
-                        <h2 class="left h2-bottom">services</h2>
+                    <div class="footer-col-left">
+                        <h2 class="left h2-bottom"><br></h2>
                         <div class="left entry-meta">
                             <ul class="no-padding no-margin">
-                                 <li class="footer-icon-bk">
-                                    <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#">Donecvarius Asdf</a></span>
-                                    </p>
-                                </li>
-
                                 <li class="footer-icon-bk footer-icon-bk-bottom">
-                                  <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#">Sociosqu Apnt</a></span>
+                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#sobre" class="menu-underline pagescroll"> Quem Somos</a></span>
                                     </p>
                                 </li>
-
                                 <li class="footer-icon-bk footer-icon-bk-bottom">
-                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#">Ullamcorper Tati</a></span>
-                                    </p>
-                                </li>
-
-                                <li class="footer-icon-bk footer-icon-bk-bottom">
-                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#">Viverra Sociqu</a></span>
-                                    </p>
-                                </li>
-								
-								<li class="footer-icon-bk footer-icon-bk-bottom">
-                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#">End of content</a></span>
-                                    </p>
-                                </li>
-
-                                <li class="footer-icon-bk footer-icon-bk-bottom">
-                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#">Himenaeos Susi</a></span>
+                                   <p class="left footer-category distab"><img src="{% static 'images/16x16x5.png' %}" alt="icon" class="footer-icon-right distab-cell-middle" /><span class="distab-cell-middle"><a href="#contato" class="menu-underline pagescroll">Contato</a></span>
                                     </p>
                                 </li>
                             </ul>
@@ -728,33 +602,43 @@
                     </div>
                 </div>
 
+               
+
                 <div class="col-md-3 col-sm-4 col-xs-12 social-icon-top footer-split-column">
 					<div class="footer-logo-bottom">
-						<a href="#"> <img src="{% static 'images/footer-logo.png' %}" alt="image" class="img-responsive image-center" />
+						<a href="#"> <img src="{% static 'images/siga.jpg' %}" alt="image" class="img-responsive image-center" />
 						</a>
 					</div>
                     <div class="center">
                         <ul class="no-padding no-margin">
-                            <li class="footer-icon">
-                                <a href="#">
-                                    <img src="{% static 'images/32x32x4.png' %}" data-src="images/32x32x4w.png" alt="32x32x4" class="icon-change" />
-                                </a>
-                            </li>
-                            <li class="footer-icon social-left-pad">
-                                <a href="#">
-                                    <img src="{% static 'images/32x32x5.png' %}" data-src="images/32x32x5w.png" alt="32x32x5" class="icon-change" />
-                                </a>
-                            </li>
-                            <li class="footer-icon social-left-pad">
-                                <a href="#">
-                                    <img src="{% static 'images/32x32x6.png' %}" data-src="images/32x32x6w.png" alt="32x32x6" class="icon-change" />
-                                </a>
-                            </li>
-                            <li class="footer-icon social-left-pad">
-                                <a href="#">
-                                    <img src="{% static 'images/32x32x7.png' %}" data-src="images/32x32x7w.png" alt="32x32x7" class="icon-change" />
-                                </a>
-                            </li>
+                            {% if contato.facebook %}
+                                <li class="footer-icon">
+                                    <a target="_blank" href="{{ contato.facebook }}">
+                                        <img src="{% static 'images/32x32x4.png' %}" data-src="images/32x32x4w.png" alt="32x32x4" class="icon-change" />
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if contato.google_plus %}    
+                                <li class="footer-icon social-left-pad">
+                                    <a target="_blank" href="{{ contato.google_plus }}">
+                                        <img src="{% static 'images/32x32x5.png' %}" data-src="images/32x32x5w.png" alt="32x32x5" class="icon-change" />
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if contato.instagran %}                            
+                                <li class="footer-icon social-left-pad">
+                                    <a target="_blank" href="{{ contato.instagran }}">
+                                        <img src="{% static 'images/32x32x6.png' %}" data-src="images/32x32x6w.png" alt="32x32x6" class="icon-change" />
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if contato.twitter %}
+                                <li class="footer-icon social-left-pad">
+                                    <a target="_blank" href="{{ contato.twitter }}">
+                                        <img src="{% static 'images/32x32x7.png' %}" data-src="images/32x32x7w.png" alt="32x32x7" class="icon-change" />
+                                    </a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -767,81 +651,7 @@
     </section>
     <!--================================= FOOTER-2 END =============================================-->
 	
-	<!-- PAYPAL INTEGRATION FORM START --> 
 	
-		<!-- DONATION FORM START --> 
-		<div id="fadeandscale" class="popup-bg">
-			<div class="">	
-				<div style="padding:10px 15px 50px 0;">
-					<button class="popup_close fadeandscale_close close close-icon-1" title="Close" aria-label="Close"><span aria-hidden="true">x</span></button>
-				</div>		
-				<div class="popup-bg-pad">
-				
-				<form action="#" method="POST" class="popup-form" id="popup-form">
-					<h2 class="donation-h2">donation form</h2>
-					<div class="row">
-						<input class="name col-xs-12 col-sm-12" type="text" name="name" placeholder="Enter Your Name" required autocomplete="off">
-						<input class="email col-xs-12 col-sm-12" type="email" name="business" placeholder="Enter Your Email" required autocomplete="off">
-						<input class="phoneno col-xs-12 col-sm-12" type="text" name="phoneno" placeholder="Enter Your Phone Number" required autocomplete="off">
-						<input class="phoneno col-xs-3 col-sm-3 price" type="text" name="amount" id="amounts" placeholder="Amount" autocomplete="off">
-						<p class="col-xs-2 col-sm-2 or p-white or">or</p>
-						<select name="amount" class="col-xs-7 col-sm-7 price" id="price-1" >
-							<option value="0">Choose the amount</option>
-							<option value="10">$10</option>
-							<option value="20">$20</option>
-							<option value="50">$50</option>						
-						</select>
-					</div>
-				<input type="hidden" name="cmd" value="_xclick">
-				<input type="hidden" name="item_name" value="DONATION">
-				<input type="hidden" name="business" value="paypal-merchant-id@domain.com">  
-				<input type="hidden" name="currency_code" value="USD">
-				<input type="hidden" name="return" value="http://domain.com/church/default_one_page.html?success=true">
-				<input type="hidden" name="cancel_return" value="http://domain.com/church/default_one_page.html?cancel=true">
-					
-					<div class="row">
-						<input  type="submit" name="submit" id="donate-btn" class="btn donate-bg col-sm-6 col-xs-6 donate-pad-right" value="Donate Now">
-						<button class="popup_close fadeandscale_close btn btn-cancel col-sm-offset-1 col-sm-4 col-xs-6" title="Close" aria-label="Close"><span aria-hidden="true">CANCEL</span></button>
-					</div>
-				</form>
-				</div>
-			</div>
-		</div>
-		<!-- DONATION FORM END --> 
-		
-		<div class="messagediv">	
-			<!-- SUCCESS MESSAGE BOX START -->
-			<div id="content">
-				<div id="success_btn">
-					<a href="#" class="close close-icon">x</a>
-					<div class="cancel-head-pad">
-						<h3 class="no-margin">Thank You For Donation</h3>
-					</div>
-					<div class="text-center">
-						<a href="#"><div class="ok-icon close">OK</div></a>
-					</div>
-				</div>
-			</div>
-			<!-- SUCCESS MESSAGE BOX END -->
-			
-			<!-- FAILURE MESSAGE BOX START -->
-			<div id="content-1">
-				<div id="cancel_btn">
-					<a href="#" class="close close-icon">x</a>
-					<div class="cancel-head-pad">
-						<h3 class="no-margin">Sorry, Your Transaction Failed, Please Try Agian.</h3>
-					</div>
-					<div class="text-center">
-						<a href="#"><div class="ok-icon close">OK</div></a>
-					</div>
-				</div>
-			</div>
-			<!-- FAILURE MESSAGE BOX END -->
-			
-		</div>
-		<div id="fade"></div>	
-	<!-- PAYPAL INTEGRATION FORM END -->
-
     <!-- JQUERY LIBRARY -->
     <script type="text/javascript" src="{% static 'js/vendor/jquery.min.js' %}"></script>
     <!-- BOOTSTRAP -->
@@ -996,6 +806,57 @@
         </div>
     </div>
     <!---Fim Modal lectio -->
+    <!-- Modal baluartes -->
+    {% for baluarte in baluartes %}
+        <div class="modal fade" id="{{ baluarte.pk }}-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-dialog">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                             <div class="modal-title text-center">
+                                <h4>{{ baluarte.nome }}</h4>
+                            </div>
+                            </div>
+                            <div class="modal-body text-left">
+                                {{ baluarte.texto|safe }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <!---Fim Modal baluartes -->
+
+    <!-- Modal calendário -->
+    {% for calendario in calendario_semanal %}
+        <div class="modal fade" id="{{ calendario.pk }}-modal-calendario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-dialog">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                             <div class="modal-title text-center">
+                                <h4>{{ calendario.dia }} {{ calendario.horario_inicial}}h - {{ calendario.horario_final}}<br>{{ calendario.titulo }}</h4>
+                            </div>
+                            </div>
+                            <div class="modal-body text-left">
+                                {{ calendario.texto|safe }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <!---Fim Modal calendário -->
 </body>
 
 </html>

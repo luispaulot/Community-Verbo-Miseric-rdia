@@ -5,7 +5,44 @@ from ckeditor.widgets import CKEditorWidget
 
 from .models import (
     BannerPrincipal, Sobre, Contato, PedidoOracao, CalendarioSemanal,
-    Vocacional, CalendarioSemanalImagem, LectioDivinaImagem)
+    Vocacional, CalendarioSemanalImagem, LectioDivinaImagem, Baluartes,
+    Socio, Casas)
+
+
+class CasasAdminForm(forms.ModelForm):
+    texto = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = Casas
+        fields = '__all__'
+
+
+class CasasAdmin(admin.ModelAdmin):
+    form = CasasAdminForm
+
+
+class SocioAdminForm(forms.ModelForm):
+    texto = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = Socio
+        fields = '__all__'
+
+
+class SocioAdmin(admin.ModelAdmin):
+    form = SocioAdminForm
+
+
+class BaluarteAdminForm(forms.ModelForm):
+    texto = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = Baluartes
+        fields = '__all__'
+
+
+class BaluarteAdmin(admin.ModelAdmin):
+    form = BaluarteAdminForm
 
 
 class VocacionalAdminForm(forms.ModelForm):
@@ -53,3 +90,6 @@ admin.site.register(Contato)
 admin.site.register(Vocacional, VocacionalAdmin)
 admin.site.register(CalendarioSemanalImagem)
 admin.site.register(LectioDivinaImagem)
+admin.site.register(Baluartes, BaluarteAdmin)
+admin.site.register(Socio, SocioAdmin)
+admin.site.register(Casas, CasasAdmin)

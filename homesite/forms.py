@@ -43,3 +43,9 @@ class PedidoOracaoForm(forms.Form):
                 'class': 'form-control',
             }),
         }
+
+
+class SocioForm(forms.Form):
+    class Meta:
+        email = forms.EmailField(label='Seu email', max_length=100)
+        nome = forms.CharField(label='Seu nome completo', max_length=100)

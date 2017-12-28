@@ -16,9 +16,10 @@ from pedidos_oracao.models import PedidosOracao
 
 from .models import (
     BannerPrincipal, Sobre, Contato, PedidoOracao, CalendarioSemanal,
-    Vocacional, CalendarioSemanalImagem, LectioDivinaImagem)
+    Vocacional, CalendarioSemanalImagem, LectioDivinaImagem, Baluartes,
+    Socio, Casas)
 
-from .forms import EmailForm, PedidoOracaoForm
+from .forms import EmailForm, PedidoOracaoForm, SocioForm
 from .utils import send_mail
 
 
@@ -32,11 +33,14 @@ class HomeView(FormView):
         context['sobre'] = Sobre.objects.first()
         context['contato'] = Contato.objects.first()
         context['pedido_oracao'] = PedidoOracao.objects.first()
+        context['baluartes'] = Baluartes.objects.all()
         context['vocacional'] = Vocacional.objects.first()
+        context['socio'] = Socio.objects.first()
         context['imagem_calendario'] = CalendarioSemanalImagem.objects.first()
         context['imagem_lectio'] = LectioDivinaImagem.objects.first()
         context['eventos'] = Evento.objects.order_by('-data_inicio')[:6]
         context['calendario_semanal'] = CalendarioSemanal.objects.all()
+        context['casas'] = Casas.objects.all()
         today = datetime.now()
         lectio = LectioDivina.objects.filter(data=today)
         if lectio:
@@ -78,5 +82,30 @@ class PedidoOracaoView(FormView):
             messages.add_message(
             self.request, messages.ERROR, 'Não foi possível salvar o seu pedido de oração. Verifique se todos os campos foram preenchidos.')
             return form_invalid(self.form)
+
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
+
+
+class SocioView(FormView):
+    template_name = 'home.html'
+    form_class = SocioForm
+    model = Socio
+
+    def post(self, request):
+        if (request.POST['nome'] and request.POST['email']):
+            nome = request.POST['nome']
+            email = request.POST['email']
+            mensagem = '<br><strong>'+'Mensagem do site - Novo sócio'+'</strong>'+'<br>'+'Nome: '+nome+'<br>Email: '+email+'<br>Mensagem: '+'Novo Sócio. Entrar em contato <br>:)'
+            messages.add_message(
+            self.request, messages.SUCCESS, 'Pedido de sócio enviado com sucesso. Aguarde que em breve entraremos em contato pelo e-mail.')
+            send_mail(subject="Novo Sócio do site", body=nome, from_email=settings.EMAIL_HOST_USER, recipient_list=[settings.EMAIL_HOST_USER], fail_silently=False, html=mensagem)
+            
+            return HttpResponseRedirect(reverse_lazy('home'))
+        else:
+            messages.add_message(
+                self.request, messages.ERROR, 'Não foi possível salvar o seu pedido de oração. Verifique se todos os campos foram preenchidos.')
+            return form_invalid(self.form)
+
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
