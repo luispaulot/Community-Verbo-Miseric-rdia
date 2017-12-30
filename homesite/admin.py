@@ -5,7 +5,7 @@ from ckeditor.widgets import CKEditorWidget
 
 from .models import (
     BannerPrincipal, Sobre, Contato, PedidoOracao, CalendarioSemanal,
-    Vocacional, CalendarioSemanalImagem, LectioDivinaImagem, Baluartes,
+    Vocacional, CalendarioSemanalImagem, Baluartes,
     Socio, Casas)
 
 
@@ -89,7 +89,6 @@ admin.site.register(PedidoOracao, PedidoOracaoAdmin)
 admin.site.register(Contato)
 admin.site.register(Vocacional, VocacionalAdmin)
 admin.site.register(CalendarioSemanalImagem)
-admin.site.register(LectioDivinaImagem)
 admin.site.register(Baluartes, BaluarteAdmin)
 admin.site.register(Socio, SocioAdmin)
 admin.site.register(Casas, CasasAdmin)

@@ -5,6 +5,13 @@ from datetime import datetime
 from django.db import models
 
 
+def rename_lectio(instance, filename):
+    ext = filename.split(".")[-1]
+    file = str(uuid.uuid4())
+    name = 'uploads/lectio/images/'+file+'.'+ext
+    return name
+
+
 def rename_audio(instance, filename):
     ext = filename.split(".")[-1]
     file = str(uuid.uuid4())
@@ -17,7 +24,9 @@ class LectioDivina(models.Model):
     texto = models.CharField('Texto', max_length=10000, blank=False, null=False)
     data = models.DateField('Data', blank=False, null=False)
     audio = models.FileField(
-        'Audio', upload_to=rename_audio, blank=True, null=False)
+        'Audio', upload_to=rename_audio, blank=True, null=False, help_text='Somente arquivos MP3')
+    imagem = models.ImageField(
+        'Imagem', upload_to=rename_lectio, blank=True, null=True, help_text='750x430')
 
     class Meta:
         verbose_name = "Lectio Divina"

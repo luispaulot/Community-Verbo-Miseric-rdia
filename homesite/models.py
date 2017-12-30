@@ -219,18 +219,6 @@ class Vocacional(models.Model):
         return 'Área do vocacional'
 
 
-class LectioDivinaImagem(models.Model):
-    imagem = models.ImageField(
-        'Imagem', upload_to=rename_lectio, blank=False, null=False, help_text='750x430')
-
-    def __str__(self):
-        return 'Imagem para a seção de lectio divina'
-
-    class Meta:
-        verbose_name = "Imagem Lectio Divina"
-        verbose_name_plural = "Imagem Lectio Divina"
-
-
 class Baluartes(models.Model):
     nome = models.CharField('Nome', max_length=100, blank=False, null=False)
     texto = models.CharField('Texto', max_length=4000, blank=False, null=False)

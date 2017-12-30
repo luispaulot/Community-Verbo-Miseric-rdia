@@ -16,7 +16,7 @@ from pedidos_oracao.models import PedidosOracao
 
 from .models import (
     BannerPrincipal, Sobre, Contato, PedidoOracao, CalendarioSemanal,
-    Vocacional, CalendarioSemanalImagem, LectioDivinaImagem, Baluartes,
+    Vocacional, CalendarioSemanalImagem, Baluartes,
     Socio, Casas)
 
 from .forms import EmailForm, PedidoOracaoForm, SocioForm
@@ -37,7 +37,6 @@ class HomeView(FormView):
         context['vocacional'] = Vocacional.objects.first()
         context['socio'] = Socio.objects.first()
         context['imagem_calendario'] = CalendarioSemanalImagem.objects.first()
-        context['imagem_lectio'] = LectioDivinaImagem.objects.first()
         context['eventos'] = Evento.objects.order_by('-data_inicio')[:6]
         context['calendario_semanal'] = CalendarioSemanal.objects.all()
         context['casas'] = Casas.objects.all()

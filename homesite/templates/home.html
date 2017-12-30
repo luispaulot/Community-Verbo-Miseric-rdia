@@ -125,15 +125,19 @@
                 <img src="{% static 'images/uline.png' %}" alt="uline" class="image-center" />
             </div>
             <div class="row">
+                {% if lectio %}
                 <div class="col-md-6 col-sm-12 res-image-bottom res-image-bottom-1">
                     <div>
-                        <img src="{{ imagem_lectio.imagem.url }}" alt="image" class="img-responsive image-center" style="height: 335px;" />
+                        {% if lectio.imagem %}
+                        <img src="{{ lectio.imagem.url }}" alt="image" class="img-responsive image-center" style="height: 335px;" />
+                        {% else %}
+                        <p>Nenhum registro de imagem foi encontrado para esta lectio...</p>
+                        {% endif %}
                     </div>
                 </div>
 
                 <div class="col-md-6 col-sm-12">
                     <div class="venue-row-space">
-                        {% if lectio %}
                             <h2 class="left h2-bottom"><a href="#">{{ lectio.titulo }}</a></h2>
                             <p class="left uline-sec-time res-text-center-1">{{ lectio.data }}</p>
                             <p class="left">{{ lectio.texto|safe|truncatechars:700 }}</p> <a href="#" style="color: #f2c516;" data-toggle="modal" data-target="#lectio-modal">Leia mais...</a>
@@ -145,9 +149,9 @@
                                     Seu navegador não suporta o componente de áudio. Por gentileza utilize outro navegador.
                                 </audio>
                             {% endif %}
-                        {% else %}
-                        <p>Não há nenhum registro de lectio divina para esta data...</p>
-                        {% endif %}
+                {% else %}
+                <p style="text-align: center">Não há nenhum registro de lectio divina para esta data...</p>
+                {% endif %}
                     </div>
                 </div>
             </div>
