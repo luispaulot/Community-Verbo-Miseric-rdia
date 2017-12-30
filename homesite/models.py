@@ -3,6 +3,8 @@ import uuid
 
 from django.db import models
 
+from colorfield.fields import ColorField
+
 
 def rename_baluartes(instance, filename):
     ext = filename.split(".")[-1]
@@ -76,7 +78,9 @@ def rename_pedidos_oracao(instance, filename):
 
 class BannerPrincipal(models.Model):
     mensagem1 = models.CharField('Mensagem 1', max_length=500)
+    mensagem1_cor = ColorField(default='#FFFFFF')
     mensagem2 = models.CharField('Mensagem 2', max_length=500)
+    mensagem2_cor = ColorField(default='#FFFFFF')
     imagem = models.ImageField(
         'Imagem', upload_to=rename_banner, blank=False, null=False, help_text='1500x760')
 
@@ -92,7 +96,7 @@ class Sobre(models.Model):
     titulo = models.CharField(
         'Título', max_length=200, blank=False, null=False)
     texto = models.CharField(
-        'Texto', max_length=9000, blank=False, null=False)
+        'Texto', max_length=20000, blank=False, null=False)
     imagem = models.ImageField(
         'Imagem', upload_to=rename_sobre, blank=False, null=False, help_text='750x400')
 
@@ -151,7 +155,8 @@ class Contato(models.Model):
 
 class PedidoOracao(models.Model):
     titulo = models.CharField('Título', max_length=50, blank=False, null=False)
-    texto = models.CharField('Texto', max_length=1000, blank=False, null=False)
+    titulo_cor = ColorField(default='#FFFFFF')
+    texto = models.CharField('Texto', max_length=3000, blank=False, null=False)
     imagem = models.ImageField(
         'Imagem', upload_to=rename_pedidos_oracao, blank=False, null=False, help_text='1500x610')
     texto_botao = models.CharField('Texto', max_length=50, blank=False, null=False)
@@ -239,9 +244,10 @@ class Baluartes(models.Model):
 
 class Socio(models.Model):
     titulo = models.CharField('Título', max_length=50, blank=False, null=False)
+    titulo_cor = ColorField(default='#FFFFFF')
     texto = models.CharField('Texto', max_length=2000, blank=False, null=False)
     imagem = models.ImageField(
-        'Imagem', upload_to=rename_socio, blank=False, null=False, help_text='1400x1000')
+        'Imagem', upload_to=rename_socio, blank=False, null=False, help_text='1500x600')
 
     class Meta:
         verbose_name = "Sócio"
