@@ -78,9 +78,9 @@ def rename_pedidos_oracao(instance, filename):
 
 class BannerPrincipal(models.Model):
     mensagem1 = models.CharField('Mensagem 1', max_length=500)
-    mensagem1_cor = ColorField(default='#FFFFFF')
+    mensagem1_cor = ColorField(default='FFFFFF')
     mensagem2 = models.CharField('Mensagem 2', max_length=500)
-    mensagem2_cor = ColorField(default='#FFFFFF')
+    mensagem2_cor = ColorField(default='FFFFFF')
     imagem = models.ImageField(
         'Imagem', upload_to=rename_banner, blank=False, null=False, help_text='1500x760')
 
