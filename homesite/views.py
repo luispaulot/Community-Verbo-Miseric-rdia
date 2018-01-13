@@ -39,7 +39,7 @@ class HomeView(FormView):
         context['socio'] = Socio.objects.first()
         context['imagem_calendario'] = CalendarioSemanalImagem.objects.first()
         context['eventos'] = Evento.objects.order_by('-data_inicio')[:6]
-        context['fotos'] = Album.objects.order_by('-data')[:6]
+        context['albuns'] = Album.objects.order_by('-data')[:6]
         context['calendario_semanal'] = CalendarioSemanal.objects.all()
         context['casas'] = Casas.objects.all()
         today = datetime.now()

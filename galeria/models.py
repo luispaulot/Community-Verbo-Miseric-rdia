@@ -22,20 +22,20 @@ class Album(models.Model):
         verbose_name_plural = "Albums"
 
     def __str__(self):
-        return '{}'.format(self.titulo)
+        return '{} | album: {}'.format(self.data, self.titulo)
 
 
 class Foto(models.Model):
     album = models.ForeignKey('Album', blank=False, null=False)
     imagem = models.ImageField(
         'Imagem', upload_to=rename_foto, blank=False, null=False)
-    data = models.DateField('Data', auto_now_add=True)
     comentario = models.CharField(
         'Comentário', max_length=500, blank=True, null=True)
+    capa = models.BooleanField('É capa do album?', default=False)
 
     class Meta:
         verbose_name = "Foto"
         verbose_name_plural = "Fotos"
 
     def __str__(self):
-        return '{} | album: {}'.format(self.data, self.album)
+        return 'album: {}'.format(self.album)
