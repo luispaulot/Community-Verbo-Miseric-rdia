@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/vendor/owl-carousel/owl.theme.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/vendor/owl-carousel/carousel.css' %}"> 
     <link href="{% static 'css/vendor/notify/notify.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom/style.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	
 	 <!-- FONT AWESOME LINK -->
@@ -54,20 +55,35 @@
                     <ul class="nav navbar-nav navbar-right" id="menu-list">
                         <li class="menu-fs"><a href="#home" class="menu-underline pagescroll">Início</a>
                         </li>
-                        <li class="menu-fs"><a href="#lectio" class="menu-underline pagescroll">Lectio divina</a>
-                        </li>
-                        <li class="menu-fs"><a href="#schedule" class="menu-underline pagescroll">Calendário semanal</a>
-                        </li>
+                        <div class="dropdown">
+                             <li class="menu-fs"><a href="" class="menu-underline pagescroll">Liturgia diária</a>
+                            </li>
+                            <div class="dropdown-content">
+                                <a class="menu-underline pagescroll" href="#lectio">Lectio divina</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                             <li class="menu-fs"><a href="" class="menu-underline pagescroll">Calendário</a>
+                            </li>
+                            <div class="dropdown-content">
+                                <a class="menu-underline pagescroll" href="#eventos">Eventos</a>
+                                <a class="menu-underline pagescroll" href="#schedule">Calendário semanal</a>
+
+                            </div>
+                        </div>
                         <li class="menu-fs"><a href="#gallery" class="menu-underline pagescroll">Galeria</a>
-                        </li>
-                        <li class="menu-fs"><a href="#eventos" class="menu-underline pagescroll">Eventos</a>
-                        </li>
-                        <li class="menu-fs"><a href="#baluartes" class="menu-underline pagescroll">Baluartes</a>
                         </li>
                         <li class="menu-fs"><a href="#pedidooracao" class="menu-underline pagescroll">Pedido de oração</a>
                         </li>
-                        <li class="menu-fs"><a href="#sobre" class="menu-underline pagescroll"> Quem somos</a>
-                        </li>
+                        <div class="dropdown">
+                            <li class="menu-fs"><a href="#sobre" class="menu-underline pagescroll"> Quem somos</a>
+                            </li>
+                            <div class="dropdown-content">
+                                <a class="menu-underline pagescroll" href="#baluartes">Baluartes</a>
+                                <a class="menu-underline pagescroll" href="#socio">Torne-se um sócio</a>
+                                <a class="menu-underline pagescroll" href="#vocacional">Vocacional</a>
+                            </div>
+                        </div>
                         <li class="menu-fs"><a href="#contato" class="menu-underline pagescroll">Contato</a>
                         </li>
                     </ul>
@@ -269,7 +285,7 @@
 
                 <div class="col-md-4 col-sm-9 col-xs-8 common-fixed-full upcoming-res-bottom-1">
                     <div>
-                        <h2 class="left h2-bottom res-text-center-2"><a href="#">{{ evento.titulo }}</a></h2>
+                        <h2 class="left h2-bottom res-text-center-2"><a data-toggle="modal" href="#{{ evento.pk }}-modal-evento">{{ evento.titulo }}</a></h2>
                         <p class="left res-text-center-2">{{ evento.descricao|safe|truncatechars:200 }}<a href="#" style="color: #f2c516;" data-toggle="modal" data-target="#{{ evento.pk }}-modal-evento"> Leia mais</a></p>
                     </div>
                 </div>
@@ -363,7 +379,7 @@
     <!--================================= HELP PEOPLE END =============================================-->
 	
      <!--================================= Vocacional-SECTION START =============================================-->
-    <section class="container-fluid section-space section-bg-1">
+    <section class="container-fluid section-space section-bg-1" id="vocacional">
         <div class="container">
             <h1 class="center">{{ vocacional.titulo }}</h1>
             <div class="center no-fs underline-bottom">
@@ -424,7 +440,7 @@
 	
 
     <!--================================= EMAIL SUBSCRIPTION START =============================================-->
-    <section class="container-fluid email-section-space" style="background: url({{ socio.imagem.url }});">
+    <section class="container-fluid email-section-space" id="socio" style="background: url({{ socio.imagem.url }});">
         <div class="container">
             <div class="col-md-10 column-center no-padding">
                 <h1 class="center cta-head-bottom" style="color: {{ socio.titulo_cor }}!important">{{ socio.titulo }}</h1>
@@ -652,7 +668,7 @@
             </div>
 
             <div class="footer-br footer-br-bottom"></div>
-            <p class="center site-generator ls">Developed by Luis Tolentino ;)</p>
+            <p class="center site-generator ls">Developed by Luis Tolentino :)</p>
         </div>
     </section>
     <!--================================= FOOTER-2 END =============================================-->
