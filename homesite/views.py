@@ -9,7 +9,7 @@ from django.shortcuts import render
 
 from django.views.generic import TemplateView, FormView
 
-from lectio_divina.models import LectioDivina
+from lectio_divina.models import LectioDivina, SantoDia
 
 from agenda.models import Evento
 from pedidos_oracao.models import PedidosOracao
@@ -46,6 +46,9 @@ class HomeView(FormView):
         lectio = LectioDivina.objects.filter(data=today)
         if lectio:
             context['lectio'] = lectio[0]
+        santo_dia = SantoDia.objects.filter(data=today)
+        if santo_dia:
+            context['santo_dia'] = santo_dia[0]
 
         return context
 

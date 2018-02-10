@@ -60,6 +60,7 @@
                             </li>
                             <div class="dropdown-content">
                                 <a class="menu-underline pagescroll" href="#lectio">Lectio divina</a>
+                                <a class="menu-underline pagescroll" href="#santo_dia">Santo do dia</a>
                             </div>
                         </div>
                         <div class="dropdown">
@@ -135,7 +136,7 @@
     <!--================================= HOUSES END =============================================-->
 	
 	
-    <!--================================= TWO-COLUMN-ICON-SECTION START =============================================-->
+    <!--================================= LECTIO DIVINA START =============================================-->
     <section class="container-fluid section-space section-bg-2" id="lectio">
         <div class="container">
             <h1 class="center">Lectio Divina</h1>
@@ -175,7 +176,41 @@
             </div>
         </div>
     </section>
-    <!--================================= TWO-COLUMN-ICON-SECTION END =============================================-->
+    <!--================================= LECTIO DIVINA END =============================================-->
+
+    <!--================================= SANTO DO DIA START =============================================-->
+    <section class="container-fluid section-space section-bg-2" id="santo_dia">
+        <div class="container">
+            <h1 class="center">Santo do Dia</h1>
+            <div class="center no-fs underline-bottom">
+                <img src="{% static 'images/uline.png' %}" alt="uline" class="image-center" />
+            </div>
+            <div class="row">
+                {% if santo_dia %}
+                <div class="col-md-6 col-sm-12 res-image-bottom res-image-bottom-1">
+                    <div>
+                        {% if santo_dia.imagem %}
+                        <img data-toggle="modal" data-target="#santo-modal" src="{{ santo_dia.imagem.url }}" alt="image" class="img-responsive image-center" style="height: 335px;" />
+                        {% else %}
+                        <p>Nenhum registro de imagem foi encontrado para esta data...</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <div class="venue-row-space">
+                            <h2 class="left h2-bottom"><a href="#">{{ santo_dia.nome }}</a></h2>
+                            <p class="left uline-sec-time res-text-center-1">{{ santo_dia.data }}</p>
+                            <p class="left">{{ santo_dia.historia|safe|truncatechars:700 }}</p> <a href="#" style="color: #f2c516;" data-toggle="modal" data-target="#santo-modal">Leia mais...</a>
+                {% else %}
+                <p style="text-align: center">Não há nenhum registro para esta data...</p>
+                {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================================= SANTO DO DIA END =============================================-->
 	
 	 <!--================================= CHURCH SCHEDULE START =============================================-->
     <section class="container-fluid section-space section-bg-1" id="schedule">
@@ -820,6 +855,29 @@
                                     Seu navegador não suporta o componente de áudio. Por gentileza utilize outro navegador.
                                 </audio>
                             {% endif %}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---Fim Modal lectio -->
+    <!-- Modal santo -->
+    <div class="modal fade" id="santo-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-dialog">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         <div class="modal-title text-center">
+                            <h4>{{ santo_dia.nome }}</h4>
+                        </div>
+                        </div>
+                        <div class="modal-body text-left">
+                            {{ santo_dia.historia|safe }}
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
