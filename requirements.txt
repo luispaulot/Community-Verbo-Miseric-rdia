@@ -1,4 +1,4 @@
-django==1.11
+django>=1.11.22
 pillow
 django-ckeditor
 django-colorfield
